@@ -1,0 +1,39 @@
+.Nav-container {
+    display: flex;
+    align-items: center;
+    background-color: rgb(28, 32, 32);
+    padding: 12px;
+}
+
+.menu-style {
+    list-style: none;
+    display: flex;
+}
+
+.home-title{
+    color: white;
+}
+
+.li-button {
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: inherit;
+    padding: 5px 10px;
+    color: white;
+}
+
+
+.button-total {
+    border: 1px solid rgb(95, 173, 224); 
+    border-radius: 3px;
+    background-color: inherit;
+    list-style: none;
+    padding: 5px 10px;
+    color: white;
+    margin-left: auto;
+    color: rgb(95, 173, 224);   
+}
+
+button {
+    margin: 5px;
+}

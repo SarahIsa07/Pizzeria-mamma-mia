@@ -1,0 +1,74 @@
+.card-style {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    border-radius: 3px;
+    width: 245px;
+    margin: 24px;
+}
+
+.card-title{
+    display: flex;
+    margin: 8px;
+    font-size: smaller;
+    font-weight: 600;
+    color: rgb(36, 35, 35);
+
+}
+
+.box-ingredients{
+    border: 1px solid gray;
+    padding: 8px 0;
+    width: 244px;
+}
+
+.ingredients-title {
+    display: flex;
+    justify-content: center;
+    margin: none;
+    color: gray;
+    font-size: smaller;
+}
+
+.ingredients-style {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    color: gray;
+}
+
+.price-style { 
+    margin: auto;
+    padding: 8px;
+    color: rgb(36, 35, 35)
+}
+
+img {
+    width: 244px;
+}
+
+.button-box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button-box {
+    display: flex;
+    font-size: small;
+}
+
+.verM-button {
+    border: 1px solid grey;
+    background-color: inherit;
+    border-radius: 3px;
+    color: rgb(36, 35, 35);
+    padding: 3px 8px;
+}
+
+.add-button {
+    background-color: rgb(39, 38, 38);
+    color: white;
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: none;
+}
