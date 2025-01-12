@@ -34,7 +34,12 @@
     display: flex;
     justify-content: center;
     font-size: 10px;
+    list-style: none;
     color: gray;
+}
+
+.ingredients-style li {
+    margin: 0px 3px;
 }
 
 .price-style { 

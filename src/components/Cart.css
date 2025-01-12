@@ -1,0 +1,62 @@
+.cartContainer {
+width: 50%;
+margin: 100px auto;
+}
+
+.pizzasAdd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.pizzaItem {
+    display: flex;
+    width: 600px;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.pizzaItem img {
+width: 80px;
+margin-right: 16px;
+}
+
+.pizzaCount {
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+}
+
+.buttonSubtract {
+    width: 20px;
+    height: 22px;
+    border: 1px solid red;
+    border-radius: 3px;
+    background-color: white;
+    color: red;
+}
+
+.buttonAdd {
+    width: 20px;
+    height: 22px;
+    border: 1px solid blue;
+    border-radius: 3px;
+    background-color: white;
+    color: blue;
+}
+
+.CardTitle {
+    margin: 5px 130px;
+}
+
+.buttonPay {
+    margin: 5px 130px;
+    padding: 4px 8px;
+    color: white;
+    background-color: rgb(36, 36, 36);
+    border-radius: 3px;
+}
+
