@@ -1,11 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from './Header'
 import Cardpizza from './Cardpizza'
 import './Home.css'
-import { pizzas } from '../assets/js/pizzas'
 
 
 const Home = () => {
+  const [newPizzas, setNewPizzas] = useState([]);
+
+  useEffect(() => {
+    consultarApi()
+  }, []);
+
+  const consultarApi = async () => {
+    const url = "http://localhost:5000/api/pizzas";
+    const response = await fetch(url);
+    const dataPizzas = await response.json();
+    setNewPizzas(dataPizzas);
+  };
+
   return (
     <>
       <div>
@@ -13,8 +25,8 @@ const Home = () => {
       </div>
       <section className="Cards-container">
         {
-          pizzas.map(pizza => (
-            <Cardpizza img={pizza.img} name={pizza.name} ingredients={pizza.ingredients} price={pizza.price}/>
+          newPizzas.map(pizza => (
+            <Cardpizza img={pizza.img} name={pizza.name} ingredients={pizza.ingredients} price={pizza.price} />
           ))
         }
       </section>

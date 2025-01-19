@@ -1,0 +1,38 @@
+.Card-PizzaInfo {
+    display: flex;
+    width: 520px;
+    border: 1px solid rgb(173, 173, 173);
+    margin: 24px auto;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.Content-PizzaInfo {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    gap: 4px;
+}
+
+.pizza-name {
+    font-weight: 500;
+    color: rgb(36, 35, 35)
+}
+
+.pizza-description { 
+    font-size: 12px;
+}
+
+.ing-list { 
+    display: flex;
+    list-style: none;
+}
+
+.ing-list li {
+    margin: 0 2px;
+    font-size: 12px;
+}
+
+.price-text { 
+    font-weight: 500;
+}
