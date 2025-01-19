@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import Register from './components/Register'
 import Login from './components/Login'
 import Cart from './components/Cart'
+import Pizza from './components/Pizza'
 
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
       <Navbar />
       {/*<Login /> */}
       {/* <Register /> */}
-      {/*<Home /> */}
-      <Cart />
+      {/*<Home />*/}
+      {/*<Cart />*/}
+      <Pizza />
       <Footer />
     </>
   )
