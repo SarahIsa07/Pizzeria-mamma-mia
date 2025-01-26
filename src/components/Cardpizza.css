@@ -55,6 +55,7 @@ img {
 .button-box {
     display: flex;
     justify-content: space-around;
+    padding-bottom: 12px;
 }
 
 .button-box {

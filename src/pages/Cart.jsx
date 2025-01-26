@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './Cart.css'
+import '../components/Cart.css'
 import { pizzaCart } from '../assets/js/pizzas'
 
 const Cart = () => {

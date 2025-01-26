@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+
+
 
 
 const Login = () => {
@@ -60,7 +63,7 @@ const Login = () => {
                                 setPassword(e.target.value)
                             )} value={password} />
                     </div>
-                    <button className="button-style" type="submit">Enviar</button>
+                    <Link to="/profile"><button className="button-style" type="submit">Enviar</button></Link>
                 </div>
             </ form>
         </>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Header from './Header'
-import Cardpizza from './Cardpizza'
-import './Home.css'
+import Header from '../components/Header'
+import Cardpizza from '../components/Cardpizza'
+import '../components/Home.css'
+import Navbar from '../components/Navbar'
 
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
   return (
     <>
       <div>
+        <Navbar />
         <Header />
       </div>
       <section className="Cards-container">

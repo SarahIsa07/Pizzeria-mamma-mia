@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Pizza.css'
+import '../components/Pizza.css'
 
 
 const Pizza = () => {
