@@ -1,22 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import '../components/Cart.css'
 import { pizzaCart } from '../assets/js/pizzas'
+import { CartContext } from '../components/context/CartContext'
+
 
 const Cart = () => {
+
+    const {countCart, setCountCart} = useContext(CartContext)
 
     const [pizzaOrder, setPizzaOrder] = useState(pizzaCart);
     let totalPrice = 0
 
     const addPizza = (index) => {
-        const pizzaItems = [...pizzaOrder];
+        const pizzaItems = [...countCart];
         pizzaItems[index].count += 1;
-        setPizzaOrder(pizzaItems);
+        setCountCart(pizzaItems);
     }
 
     const removePizza = (index) => {
-        const pizzaItems = [...pizzaOrder];
+        const pizzaItems = [...countCart];
         pizzaItems[index].count -= 1;
-        setPizzaOrder(pizzaItems);
+        setCountCart(pizzaItems);
     }
 
     return (
@@ -24,8 +28,7 @@ const Cart = () => {
             <h4 className="CardTitle">Detalles del pedido:</h4>
             <div className="pizzasAdd">
                 <ul>
-                    {
-                        pizzaOrder.map((pizza, index) => {
+                    {countCart.map((pizza, index) => {
                             if (pizza.count > 0) {
                                 totalPrice += (pizza.count * pizza.price)
                                 return (

@@ -1,13 +1,28 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Navbar.css'
 import { Link } from 'react-router-dom';
+import { CartContext } from './context/CartContext';
 
 const Navbar = () => {
-  const total = 25000;
+
+  const { countCart, setCountCart } = useContext(CartContext);
+
+  let total = 0;
+
+  countCart.map(pizza => {
+    if (pizza.count > 0) {
+      total += (pizza.count * pizza.price)
+    }
+  }
+
+  )
+
   const token = false;
 
   const totalFormateado = total.toLocaleString('es-ES', {
     currency: 'CLP'
+
+
   });
 
   return (

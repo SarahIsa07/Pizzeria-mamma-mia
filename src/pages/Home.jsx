@@ -28,7 +28,7 @@ const Home = () => {
       <section className="Cards-container">
         {
           newPizzas.map(pizza => (
-            <Cardpizza img={pizza.img} name={pizza.name} ingredients={pizza.ingredients} price={pizza.price} />
+            <Cardpizza key={pizza.id} img={pizza.img} name={pizza.name} ingredients={pizza.ingredients} price={pizza.price} id={pizza.id} />
           ))
         }
       </section>

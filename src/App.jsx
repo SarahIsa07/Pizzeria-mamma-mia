@@ -7,12 +7,14 @@ import { Route, Routes } from 'react-router-dom';
 import Pizza from './pages/Pizza';
 import Profile from './pages/Profile';
 import NotFound from './components/NotFound';
+import CartProvider from './components/context/CartContext';
 
 
 function App() {
 
   return (
     <>
+    <CartProvider>
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
@@ -22,6 +24,7 @@ function App() {
         <Route path="/profile" element={<Profile />}/>
         <Route path="*" element={<NotFound />}/>
       </Routes>
+      </CartProvider>
     </>
   )
 }
