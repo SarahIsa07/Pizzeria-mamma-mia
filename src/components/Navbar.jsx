@@ -1,11 +1,25 @@
 import React, { useContext } from 'react'
 import './Navbar.css'
-import { Link } from 'react-router-dom';
+import { Link, Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { CartContext } from './context/CartContext';
+import { UserContext } from './context/UserContext';
+
+
 
 const Navbar = () => {
 
+  const navigate = useNavigate();
+
+  const setActiveClass = ({ isActive }) => (isActive ? "active" : undefined);
+
   const { countCart, setCountCart } = useContext(CartContext);
+
+  const { token, logout } = useContext(UserContext);
+
+  const buttonLogout = () => {
+    logout();
+    navigate(`/login`)
+  }
 
   let total = 0;
 
@@ -13,11 +27,9 @@ const Navbar = () => {
     if (pizza.count > 0) {
       total += (pizza.count * pizza.price)
     }
-  }
+  })
 
-  )
 
-  const token = false;
 
   const totalFormateado = total.toLocaleString('es-ES', {
     currency: 'CLP'
@@ -30,23 +42,23 @@ const Navbar = () => {
       <div className="Nav-container">
         <p className="home-title">Pizzería Mamma mía!</p>
         <ul className="menu-style">
-          <li><Link to="/"><button className="li-button">🍕Home</button></Link></li>
+          <li><button className="li-button"><NavLink className={setActiveClass} to="/">🍕Home</NavLink></button></li>
           <li>
             {
               token ?
                 <button className="li-button">🔓Profile</button>
-                : <Link to="/login"><button className="li-button">🔐Login</button></Link>
+                : <button className="li-button"><NavLink className={setActiveClass} to="/login">🔐Login</NavLink></button>
             }
           </li>
           <li>
             {
               token ?
-                <button className="li-button">🔒Logout</button>
-                : <Link to="/register"><button className="li-button">🔐Register</button></Link>
+                <button className="li-button" onClick={buttonLogout}>🔒Logout</button>
+                : <button className="li-button"><NavLink className={setActiveClass} to="/register">🔐Register</NavLink></button>
             }
           </li>
         </ul>
-        <button className="button-total"><Link to="/cart">🛒Total: ${totalFormateado}</Link></button>
+        <button className="button-total"><NavLink className={setActiveClass} to="/cart">🛒Total: ${totalFormateado}</NavLink></button>
       </div>
     </nav>
   )

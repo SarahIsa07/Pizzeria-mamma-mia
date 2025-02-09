@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { UserContext } from '../components/context/UserContext';
 
 
 
 
 const Login = () => {
+
+
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -13,6 +16,10 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const [successMessage, setSuccessMessage] = useState(false)
+
+    const { login } = useContext(UserContext);
+    
+    const navigate = useNavigate();
 
     const validarInput = (e) => {
         e.preventDefault();
@@ -32,6 +39,8 @@ const Login = () => {
         setErrorMessage('')
         setEmail('');
         setPassword('');
+        login();
+        navigate(`/profile`)
     };
 
     return (
@@ -63,7 +72,7 @@ const Login = () => {
                                 setPassword(e.target.value)
                             )} value={password} />
                     </div>
-                    <Link to="/profile"><button className="button-style" type="submit">Enviar</button></Link>
+                    <button className="button-style" type="submit">Enviar</button>
                 </div>
             </ form>
         </>
