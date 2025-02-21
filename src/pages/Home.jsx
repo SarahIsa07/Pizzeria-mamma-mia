@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import Cardpizza from '../components/Cardpizza'
 import '../components/Home.css'
-import Navbar from '../components/Navbar'
+// import Navbar from '../components/Navbar'
 
 
 const Home = () => {
@@ -22,7 +22,7 @@ const Home = () => {
   return (
     <>
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <Header />
       </div>
       <section className="Cards-container">
