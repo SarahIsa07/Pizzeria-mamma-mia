@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import '../components/Cart.css'
 import { pizzaCart } from '../assets/js/pizzas'
 import { CartContext } from '../components/context/CartContext'
@@ -7,27 +7,66 @@ import { UserContext } from '../components/context/UserContext'
 
 const Cart = () => {
 
+    const [cartItems, setCartItems] = useState([])
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState(null);
+
     const { token } = useContext(UserContext);
-    const handlePago = () => {
+
+    const { countCart, setCountCart } = useContext(CartContext)
+
+    useEffect(() => {
+        setCartItems([{ ...CartContext }]);
+    }, []);
+
+
+    const handlePago = async () => {
         console.log("Procesando pago...")
-    }
-        const { countCart, setCountCart } = useContext(CartContext)
+        console.log(countCart)
 
-        const [pizzaOrder, setPizzaOrder] = useState(pizzaCart);
-        let totalPrice = 0
-
-        const addPizza = (index) => {
-            const pizzaItems = [...countCart];
-            pizzaItems[index].count += 1;
-            setCountCart(pizzaItems);
-        }
-
-        const removePizza = (index) => {
-            const pizzaItems = [...countCart];
-            pizzaItems[index].count -= 1;
-            setCountCart(pizzaItems);
-        }
+        try {
+            const response = await fetch("http://localhost:5000/api/checkouts", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(countCart),
+                });
     
+          if (!response.ok) {
+            throw new Error('Error al procesar el checkout');
+          }
+    
+          const data = await response.json();
+          console.log('Checkout exitoso:', data);
+          alert('Compra realizada con éxito!');
+    
+          setCartItems([]);
+        } catch (error) {
+          setError(error.message);
+          console.error('Error durante el checkout:', error);
+        } finally {
+          setIsSubmitting(false);
+        };
+    };
+    
+
+    const [pizzaOrder, setPizzaOrder] = useState(pizzaCart);
+    let totalPrice = 0
+
+    const addPizza = (index) => {
+        const pizzaItems = [...countCart];
+        pizzaItems[index].count += 1;
+        setCountCart(pizzaItems);
+    }
+
+    const removePizza = (index) => {
+        const pizzaItems = [...countCart];
+        pizzaItems[index].count -= 1;
+        setCountCart(pizzaItems);
+    }
+
 
 
     return (
@@ -58,11 +97,11 @@ const Cart = () => {
             </div>
             <h3 className='CardTitle'>Total: ${totalPrice.toLocaleString()}</h3>
             {
-              token ?
-            <button className='buttonPay'
-            onClick={handlePago}>Pagar</button>
-            : <></>
-}
+                token ?
+                    <button className='buttonPay'
+                        onClick={handlePago}>Pagar</button>
+                    : <></>
+            }
         </div>
     )
 }
