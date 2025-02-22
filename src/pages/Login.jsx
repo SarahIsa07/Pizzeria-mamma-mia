@@ -7,8 +7,6 @@ import { UserContext } from '../components/context/UserContext';
 
 const Login = () => {
 
-
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -17,11 +15,11 @@ const Login = () => {
 
     const [successMessage, setSuccessMessage] = useState(false)
 
-    const { login } = useContext(UserContext);
-    
     const navigate = useNavigate();
 
-    const validarInput = (e) => {
+    const { login } = useContext(UserContext);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!email.trim() || !password.trim()) {
@@ -39,13 +37,15 @@ const Login = () => {
         setErrorMessage('')
         setEmail('');
         setPassword('');
-        login();
-        navigate(`/profile`)
-    };
+        login(email, password);
 
+    }
+
+
+    
     return (
         <>
-            <form className="form-style" onSubmit={validarInput}>
+            <form className="form-style" onSubmit={handleSubmit}>
                 <h2>Login</h2>
                 {error ? <p className='error-message'>{errorMessage}</p> : null}
                 {successMessage ? <p className='success-message'>¡Hola, bienvenido!</p> : null}
@@ -57,9 +57,10 @@ const Login = () => {
                             name="email"
                             className="input-style"
                             placeholder='✉️ Email'
-                            onChange={(e) => (
+                            value={email}
+                            onChange={(e) => 
                                 setEmail(e.target.value)
-                            )} value={email} />
+                            } />
                     </div>
 
                     <div className='form-input'>
@@ -68,9 +69,10 @@ const Login = () => {
                             name="password"
                             className="input-style"
                             placeholder='🔑 Contraseña'
-                            onChange={(e) => (
+                            value={password}
+                            onChange={(e) => 
                                 setPassword(e.target.value)
-                            )} value={password} />
+                            } />
                     </div>
                     <button className="button-style" type="submit">Enviar</button>
                 </div>

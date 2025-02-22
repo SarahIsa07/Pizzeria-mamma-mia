@@ -16,21 +16,22 @@ import { UserContext } from './components/context/UserContext';
 
 function App() {
 
+
   const { token } = useContext(UserContext);
 
   return (
     <>
-    <CartProvider>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/login" element={token === false ? <Login/> : <Navigate to="/"/>}/>
-        <Route path="/register" element={token === false ? <Register/> : <Navigate to= "/"/>}/>
-        <Route path="/cart" element={<Cart/>}/>
-        <Route path="/pizza/:id" element={<Pizza />}/>
-        <Route path="/profile" element={token ? <Profile /> : <Navigate to="/login" />}/>
-        <Route path="*" element={<NotFound />}/>
-      </Routes>
+      <CartProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={token === null ? <Login /> : <Navigate to="/profile" />} />
+          <Route path="/register" element={token === null ? <Register /> : <Navigate to="/" />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/pizza/:id" element={<Pizza />} />
+          <Route path="/profile" element={token ? <Profile /> : <Navigate to="/login" />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </CartProvider>
     </>
   )
